@@ -1,102 +1,131 @@
 <!DOCTYPE html><html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Brighter Day School Portal</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Brighter Day School</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f4f4f4;
-    }
-    header {
-      background-color: #333;
-      color: #ffcc00;
-      padding: 20px;
-      text-align: center;
-    }
-    nav {
-      background-color: #444;
-      overflow: hidden;
-    }
-    nav a {
-      float: left;
-      display: block;
-      color: #ffcc00;
-      text-align: center;
-      padding: 14px 16px;
-      text-decoration: none;
-    }
-    nav a:hover {
-      background-color: #555;
-    }
-    section {
-      padding: 20px;
-    }
-    footer {
-      background-color: #333;
-      color: #fff;
-      text-align: center;
-      padding: 10px;
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-    }
-    .btn {
-      background-color: #ffcc00;
-      color: #000;
-      border: none;
-      padding: 10px 20px;
-      cursor: pointer;
-      font-size: 16px;
-    }
-    .btn:hover {
-      background-color: #e6b800;
-    }
+    :root {
+      --primary-color: #fdd835;
+      --secondary-color: #333;
+      --accent-color: #fff;
+      --text-color: #222;
+      --card-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f4f4f4;
+  color: var(--text-color);
+}
+
+header {
+  background: linear-gradient(45deg, var(--secondary-color), #555);
+  color: var(--primary-color);
+  padding: 20px;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2.5em;
+}
+
+header p {
+  margin: 5px 0 0;
+  font-size: 1.1em;
+  color: var(--accent-color);
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  background: var(--primary-color);
+  padding: 10px;
+}
+
+nav a {
+  color: var(--secondary-color);
+  text-decoration: none;
+  margin: 0 15px;
+  font-weight: bold;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+.container {
+  padding: 20px;
+  max-width: 900px;
+  margin: auto;
+}
+
+section {
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: var(--card-shadow);
+  margin-bottom: 20px;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background: var(--secondary-color);
+  color: var(--accent-color);
+}
+
+.signature {
+  font-style: italic;
+  font-size: 0.9em;
+  color: #ccc;
+}
+
   </style>
 </head>
 <body>
   <header>
-    <h1>Brighter Day Preparatory Elementary Junior and Senior High School</h1>
-    <p>Empowering Students for a Brighter Future</p>
+    <h1>Brighter Day School</h1>
+    <p>Empowering a brighter future</p>
   </header>  <nav>
     <a href="#about">About</a>
     <a href="#mission">Mission</a>
     <a href="#values">Values</a>
-    <a href="#staff">Staff</a>
-    <a href="#students">Students</a>
-    <a href="#results">Check Results</a>
-  </nav>  <section id="about">
-    <h2>About Us</h2>
-    <p>Brighter Day is a forward-thinking school in Paynesville dedicated to providing quality education from 1st to 12th grade. With 100 students and 10 passionate teachers, we prepare every child for academic success and strong character development.</p>
-  </section>  <section id="mission">
-    <h2>Mission</h2>
-    <p>To nurture young minds through holistic education, innovative teaching, and strong moral values to become leaders and contributors to society.</p>
-  </section>  <section id="values">
-    <h2>Our Core Values</h2>
-    <ul>
-      <li>Integrity</li>
-      <li>Excellence</li>
-      <li>Respect</li>
-      <li>Creativity</li>
-      <li>Community</li>
-    </ul>
-  </section>  <section id="staff">
-    <h2>Meet Our Staff</h2>
-    <p><a href="staff.html" class="btn">View Staff List</a></p>
-  </section>  <section id="students">
-    <h2>Student Information</h2>
-    <p><a href="students.html" class="btn">View Students</a></p>
-  </section>  <section id="results">
-    <h2>Results Checker</h2>
-    <form action="results.html" method="get">
-      <label for="id">Enter Student ID:</label><br>
-      <input type="text" id="id" name="id" required>
-      <button type="submit" class="btn">View Results</button>
-    </form>
-  </section>  <footer>
+    <a href="staff.html">Staff</a>
+    <a href="students.html">Students</a>
+    <a href="#results">Results</a>
+  </nav>  <div class="container">
+    <section id="about">
+      <h2>About Us</h2>
+      <p>Brighter Day Preparatory Elementary Junior and Senior High School is committed to providing quality education from 1st to 12th grade. Located in Paynesville, we serve over 100 students with a dedicated team of 10 teachers.</p>
+    </section><section id="mission">
+  <h2>Our Mission</h2>
+  <p>To empower students with knowledge, discipline, and confidence to lead and succeed in a competitive world.</p>
+</section>
+
+<section id="values">
+  <h2>Our Values</h2>
+  <ul>
+    <li>Integrity</li>
+    <li>Excellence</li>
+    <li>Respect</li>
+    <li>Innovation</li>
+    <li>Community</li>
+  </ul>
+</section>
+
+<section id="results">
+  <h2>Check Results</h2>
+  <form action="results.html" method="get">
+    <label for="id">Enter Student ID:</label>
+    <input type="text" name="id" id="id" required />
+    <button type="submit">Check</button>
+  </form>
+</section>
+
+  </div>  <footer>
     <p>&copy; 2025 Brighter Day School. All rights reserved.</p>
+    <p class="signature">Designed by Carrew S. Sandi 😉</p>
   </footer>
 </body>
 </html>
