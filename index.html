@@ -1,152 +1,73 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Brighter Day Preparatory</title>
+  <title>Brighter Day Results Portal</title>
   <style>
-    /* Colors */
-    :root {
-      --charcoal: #36454f;
-      --yellow: #ffd700;
-      --light-gray: #f5f5f5;
-      --dark-text: #222;
-    }
-
     body {
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: var(--light-gray);
-      color: var(--charcoal);
-    }
-
-    header {
-      background-color: var(--charcoal);
-      color: white;
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    header h1 {
-      margin: 0;
-      font-size: 1.8rem;
-      letter-spacing: 2px;
-    }
-
-    nav a {
-      color: white;
-      margin-left: 1.5rem;
-      text-decoration: none;
-      font-weight: 600;
-      transition: color 0.3s ease;
-    }
-    nav a:hover {
-      color: var(--yellow);
-    }
-
-    .banner {
-      background: linear-gradient(135deg, var(--charcoal), var(--yellow));
-      color: white;
+      font-family: Arial, sans-serif;
+      padding: 40px;
+      background: #333; /* charcoal gray */
+      color: #ffc107;  /* yellow */
       text-align: center;
-      padding: 4rem 1rem;
-      font-size: 1.3rem;
-      font-weight: 500;
     }
-
-    .intro {
-      max-width: 900px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-      font-size: 1.1rem;
-      line-height: 1.6;
-      text-align: center;
-      color: var(--charcoal);
+    input[type="text"] {
+      padding: 10px;
+      font-size: 16px;
+      width: 250px;
+      border: none;
+      border-radius: 5px;
+      margin-right: 10px;
     }
-
-    .quick-links {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 2rem;
-      max-width: 900px;
-      margin: 3rem auto;
-      padding: 0 1rem;
-    }
-
-    .card {
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
-      padding: 2rem;
-      width: 200px;
-      text-align: center;
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background: #ffc107;
+      border: none;
+      border-radius: 5px;
       cursor: pointer;
-      transition: transform 0.3s ease;
-      color: var(--charcoal);
-      font-weight: 600;
-      text-decoration: none;
+      color: #333;
+      font-weight: bold;
     }
-    .card:hover {
-      transform: scale(1.05);
-      background-color: var(--yellow);
-      color: var(--charcoal);
-    }
-
-    footer {
-      background-color: var(--charcoal);
-      color: white;
-      text-align: center;
-      padding: 1rem;
-      font-size: 0.9rem;
-    }
-
-    @media (max-width: 480px) {
-      .quick-links {
-        flex-direction: column;
-        gap: 1rem;
-      }
-      .card {
-        width: 100%;
-      }
+    #errorMsg {
+      margin-top: 15px;
+      color: #ff4444;
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Brighter Day Preparatory</h1>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="about.html">About Us</a>
-      <a href="staff.html">Staff</a>
-      <a href="students.html">Students</a>
-      <a href="results.html">Results Checker</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </header>
 
-  <section class="banner" aria-label="Welcome Banner">
-    <h2>Welcome to Brighter Day Preparatory Elementary & Junior/Senior High School</h2>
-    <p>Your future shines brighter here.</p>
-  </section>
+  <h1>Brighter Day Preparatory School</h1>
+  <p>Enter your Student ID to check your results</p>
+  
+  <input type="text" id="studentId" placeholder="Enter Student ID (e.g., BDPS1001)" />
+  <button onclick="checkAndRedirect()">Check Results</button>
+  
+  <div id="errorMsg"></div>
 
-  <section class="intro" aria-label="Introduction to the School">
-    <p>
-      At Brighter Day Preparatory, we provide a nurturing environment where every student can grow academically, socially, and personally. With dedicated teachers and a vibrant community, we prepare learners for success in school and beyond.
-    </p>
-  </section>
+  <script>
+    function checkAndRedirect() {
+      const idInput = document.getElementById('studentId');
+      const errorDiv = document.getElementById('errorMsg');
+      const studentId = idInput.value.trim().toUpperCase();
 
-  <section class="quick-links" aria-label="Quick Navigation Links">
-    <a class="card" href="about.html">About Us</a>
-    <a class="card" href="staff.html">Meet the Staff</a>
-    <a class="card" href="students.html">Student Portal</a>
-    <a class="card" href="results.html">Check Results</a>
-    <a class="card" href="contact.html">Contact Us</a>
-  </section>
+      // Clear previous error
+      errorDiv.textContent = '';
 
-  <footer>
-    &copy; 2025 Brighter Day Preparatory • All Rights Reserved
-  </footer>
+      // Simple validation for empty or wrong format
+      if (!studentId) {
+        errorDiv.textContent = 'Please enter your Student ID.';
+        return;
+      }
+      if (!/^BDPS\d{4}$/.test(studentId)) {
+        errorDiv.textContent = 'Invalid Student ID format. Example: BDPS1001';
+        return;
+      }
+
+      // Redirect to results page with ID as query param
+      window.location.href = `results.html?id=${studentId}`;
+    }
+  </script>
+
 </body>
 </html>
