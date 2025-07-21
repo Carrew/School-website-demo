@@ -1,125 +1,74 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html><html lang="en">
 <head>
-  <title>Brighter Day - Student Results</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Results - Brighter Day</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #f0f0f0;
-      padding: 30px;
-      color: #333;
+      padding: 20px;
+      background-color: #f9f9f9;
     }
     h1 {
-      color: #ffc107;
-      text-align: center;
-      margin-bottom: 30px;
-    }
-    #message {
-      text-align: center;
-      color: red;
-      font-weight: bold;
-      margin-bottom: 20px;
+      color: #444;
     }
     table {
-      margin: 0 auto;
+      width: 100%;
       border-collapse: collapse;
-      width: 60%;
-      background: white;
-      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+      margin-top: 20px;
     }
     th, td {
-      padding: 12px 15px;
       border: 1px solid #ddd;
+      padding: 8px;
       text-align: center;
     }
     th {
-      background: #ffc107;
-      color: #333;
+      background-color: #ffcc00;
+      color: #000;
     }
-    tfoot th {
-      background: #333;
-      color: #ffc107;
-      font-size: 1.1em;
-    }
-    a {
-      display: block;
-      width: 60%;
-      margin: 30px auto;
-      text-align: center;
-      text-decoration: none;
-      color: #ffc107;
-      font-weight: bold;
+    #not-found {
+      color: red;
+      margin-top: 20px;
     }
   </style>
 </head>
 <body>
+  <h1>Student Results</h1>
+  <div id="result"></div>
+  <div id="not-found" style="display: none;">Student ID not found. Please go back and check your ID.</div>  <script src="results-data.js"></script>  <script>
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const studentID = urlParams.get("id");
 
-  <h1>Brighter Day Preparatory School - Student Results</h1>
+    const studentResult = results[studentID];
 
-  <div id="message"></div>
-
-  <table id="resultsTable" style="display:none;">
-    <thead>
-      <tr>
-        <th>Subject</th>
-        <th>Score</th>
-      </tr>
-    </thead>
-    <tbody id="resultsBody"></tbody>
-    <tfoot>
-      <tr>
-        <th>Average</th>
-        <th id="averageScore"></th>
-      </tr>
-    </tfoot>
-  </table>
-
-  <a href="index.html">← Back to Search</a>
-
-  <!-- Load external results -->
-  <script src="results-data.js"></script>
-  <script>
-    function getQueryParam(param) {
-      const urlParams = new URLSearchParams(window.location.search);
-      return urlParams.get(param);
-    }
-
-    function displayResults(studentId) {
-      const messageDiv = document.getElementById('message');
-      const table = document.getElementById('resultsTable');
-      const tbody = document.getElementById('resultsBody');
-      const avgElem = document.getElementById('averageScore');
-
-      if (!studentId) {
-        messageDiv.textContent = 'No Student ID provided. Please go back and enter your ID.';
-        return;
-      }
-
-      const studentResults = results[studentId.toUpperCase()];
-      if (!studentResults) {
-        messageDiv.textContent = `❌ Student ID "${studentId}" not found. Please check and try again.`;
-        return;
-      }
-
-      tbody.innerHTML = '';
+    if (studentResult) {
+      const subjects = Object.keys(studentResult);
       let total = 0;
-      let count = 0;
+      let tableHTML = `
+        <table>
+          <thead>
+            <tr>
+              <th>Subject</th>
+              <th>Score</th>
+            </tr>
+          </thead>
+          <tbody>
+      `;
 
-      for (const subject in studentResults) {
-        const score = studentResults[subject];
+      subjects.forEach(subject => {
+        const score = studentResult[subject];
         total += score;
-        count++;
-        tbody.innerHTML += `<tr><td>${subject}</td><td>${score}</td></tr>`;
-      }
+        tableHTML += `<tr><td>${subject}</td><td>${score}</td></tr>`;
+      });
 
-      const average = (total / count).toFixed(2);
-      avgElem.textContent = average;
-      messageDiv.textContent = `Results for Student ID: ${studentId.toUpperCase()}`;
-      table.style.display = 'table';
+      const average = (total / subjects.length).toFixed(2);
+      tableHTML += `<tr><th>Average</th><td><strong>${average}</strong></td></tr>`;
+      tableHTML += '</tbody></table>';
+
+      document.getElementById("result").innerHTML = tableHTML;
+    } else {
+      document.getElementById("not-found").style.display = "block";
     }
-
-    const studentId = getQueryParam('id');
-    displayResults(studentId);
-  </script>
-</body>
+  </script></body>
 </html>
