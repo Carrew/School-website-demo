@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Results Checker - Brighter Day Preparatory</title>
+  <style>
+    :root {
+      --charcoal: #36454f;
+      --yellow: #ffd700;
+      --light-gray: #f5f5f5;
+      --dark-text: #222;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--light-gray);
+      color: var(--charcoal);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header {
+      background-color: var(--charcoal);
+      color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.5rem;
+    }
+
+    nav a {
+      color: white;
+      margin-left: 1rem;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+    nav a:hover {
+      color: var(--yellow);
+    }
+
+    main {
+      flex-grow: 1;
+      max-width: 600px;
+      margin: 3rem auto;
+      background: white;
+      border-radius: 10px;
+      padding: 2rem;
+      box-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
+    }
+
+    h2 {
+      text-align: center;
+      color: var(--charcoal);
+      margin-bottom: 2rem;
+    }
+
+    label {
+      font-weight: 600;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 0.5rem 0.75rem;
+      font-size: 1rem;
+      border: 2px solid var(--charcoal);
+      border-radius: 5px;
+      margin-bottom: 1.5rem;
+      box-sizing: border-box;
+    }
+
+    button {
+      background-color: var(--yellow);
+      border: none;
+      padding: 0.75rem 2rem;
+      font-size: 1.1rem;
+      font-weight: 700;
+      border-radius: 5px;
+      color: var(--charcoal);
+      cursor: pointer;
+      display: block;
+      margin: 0 auto;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #e6c200;
+    }
+
+    .result {
+      margin-top: 2rem;
+      background-color: var(--light-gray);
+      border: 1px solid var(--charcoal);
+      border-radius: 8px;
+      padding: 1rem 1.5rem;
+      font-size: 1.1rem;
+      white-space: pre-wrap;
+      text-align: center;
+    }
+
+    footer {
+      background-color: var(--charcoal);
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      margin-top: auto;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Brighter Day Preparatory</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About Us</a>
+      <a href="staff.html">Staff</a>
+      <a href="students.html">Students</a>
+      <a href="results.html">Results Checker</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Check Your Exam Results</h2>
+    <form id="resultsForm" onsubmit="return false;">
+      <label for="studentId">Enter Student ID:</label>
+      <input type="text" id="studentId" name="studentId" placeholder="e.g., BDP1234" required />
+      <button type="submit" onclick="checkResults()">Check Results</button>
+    </form>
+
+    <div class="result" id="resultDisplay" aria-live="polite"></div>
+  </main>
+
+  <footer>
+    &copy; 2025 Brighter Day Preparatory • All Rights Reserved
+  </footer>
+
+  <script>
+    // Sample data for demonstration:
+    const studentResults = {
+      "BDP1234": {
+        name: "John Doe",
+        grade: "Grade 10",
+        results: {
+          Math: "A",
+          English: "B+",
+          Science: "A-",
+          History: "B",
+          "Physical Education": "A"
+        }
+      },
+      "BDP5678": {
+        name: "Jane Smith",
+        grade: "Grade 12",
+        results: {
+          Math: "B",
+          English: "A",
+          Chemistry: "A+",
+          Physics: "A",
+          "Computer Science": "A-"
+        }
+      }
+      // Add more student data here
+    };
+
+    function checkResults() {
+      const inputId = document.getElementById('studentId').value.trim().toUpperCase();
+      const resultDiv = document.getElementById('resultDisplay');
+
+      if (inputId in studentResults) {
+        const student = studentResults[inputId];
+        let resultsText = `Name: ${student.name}\nGrade: ${student.grade}\n\nResults:\n`;
+
+        for (const subject in student.results) {
+          resultsText += `${subject}: ${student.results[subject]}\n`;
+        }
+
+        resultDiv.textContent = resultsText;
+      } else {
+        resultDiv.textContent = "Sorry, no results found for that Student ID. Please check your ID and try again.";
+      }
+    }
+  </script>
+</body>
+</html>
