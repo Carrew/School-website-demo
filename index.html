@@ -3,152 +3,105 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Hope International School</title>
+  <title>School Website Demo</title>
   <style>
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f9f9f9;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f7f9fc;
       color: #333;
     }
     header {
-      background: #003366;
-      color: #fff;
-      padding: 1.2rem;
+      background-color: #003366;
+      padding: 1rem 2rem;
+      color: white;
       text-align: center;
     }
-    nav {
-      background: #00509E;
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      padding: 0.8rem;
-    }
     nav a {
+      margin: 0 1rem;
       color: white;
       text-decoration: none;
       font-weight: bold;
     }
-    section {
-      padding: 2rem;
-      max-width: 800px;
-      margin: auto;
+    section.hero {
+      text-align: center;
+      padding: 3rem 2rem;
+      background: linear-gradient(135deg, #004080, #0066cc);
+      color: white;
     }
-    h2 {
-      color: #00509E;
+    section.hero h1 {
+      font-size: 2.5rem;
+    }
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 2rem;
+    }
+    .card {
+      background: white;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .btn {
+      display: inline-block;
+      padding: 0.8rem 1.5rem;
+      background: #0073e6;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+    .btn:hover {
+      background: #005bb5;
     }
     footer {
       text-align: center;
+      padding: 1rem;
       background: #003366;
       color: white;
-      padding: 1rem;
-      margin-top: 3rem;
-    }
-
-    .result-box {
-      background: #fff;
-      padding: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-    }
-    .result-box input, .result-box button {
-      padding: 0.6rem;
-      margin: 0.5rem 0;
-      width: 100%;
-      font-size: 1rem;
-    }
-
-    #resultOutput {
-      font-weight: bold;
-      color: green;
-      margin-top: 1rem;
-    }
-
-    .whatsapp-float {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background-color: #25d366;
-      color: white;
-      border-radius: 50%;
-      padding: 15px;
-      font-size: 20px;
-      text-align: center;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    }
-    .whatsapp-float:hover {
-      background-color: #128c7e;
     }
   </style>
 </head>
 <body>
+  <header>
+    <h2>CarrewTech School Demo</h2>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#results">Check Results</a>
+      <a href="https://wa.me/231XXXXXXXXX" target="_blank">Contact on WhatsApp</a>
+    </nav>
+  </header>
 
-<header>
-  <h1>Hope International School</h1>
-  <p>Inspiring Excellence. Creating Leaders.</p>
-</header>
+  <section class="hero">
+    <h1>Welcome to Our School</h1>
+    <p>Building the future through quality education.</p>
+    <a class="btn" href="#results">Check Student Results</a>
+  </section>
 
-<nav>
-  <a href="#about">About</a>
-  <a href="#admissions">Admissions</a>
-  <a href="#results">Results</a>
-  <a href="#contact">Contact</a>
-</nav>
+  <div class="container">
+    <div class="card">
+      <h3>About Our School</h3>
+      <p>This is a demo site for showcasing how a school website can look. It includes basic features like result checking and contact options to show parents, students, and the public what's happening at the school.</p>
+    </div>
 
-<section id="about">
-  <h2>About Us</h2>
-  <p>Hope International School is committed to providing quality education to prepare students for a bright future. With experienced staff and a supportive learning environment, we help each child reach their potential.</p>
-</section>
+    <div class="card" id="results">
+      <h3>Student Results</h3>
+      <p>Click the button below to check student results using your ID or phone number.</p>
+      <a class="btn" href="results.html">Go to Result Checker</a>
+    </div>
 
-<section id="admissions">
-  <h2>Admissions</h2>
-  <p>We are now accepting applications for the next academic year. Our programs include Kindergarten to Grade 12. Call us or message us on WhatsApp for details.</p>
-</section>
-
-<section id="results">
-  <h2>Check Results</h2>
-  <div class="result-box">
-    <label for="studentID">Enter Student ID:</label>
-    <input type="text" id="studentID" placeholder="e.g. HIS2025-001" />
-    <button onclick="checkResult()">Check Result</button>
-    <div id="resultOutput"></div>
+    <div class="card">
+      <h3>Contact Us</h3>
+      <p>Need a school website like this one? Contact CarrewTech on WhatsApp now.</p>
+      <a class="btn" href="https://wa.me/231XXXXXXXXX" target="_blank">Chat on WhatsApp</a>
+    </div>
   </div>
-</section>
 
-<section id="contact">
-  <h2>Contact Us</h2>
-  <p><strong>Phone:</strong> +231-886-123456</p>
-  <p><strong>Email:</strong> hopeinternationalschool@example.com</p>
-  <p><strong>Location:</strong> Paynesville, Liberia</p>
-</section>
-
-<a class="whatsapp-float" href="https://wa.me/231886123456" target="_blank" title="Chat on WhatsApp">
-  💬
-</a>
-
-<footer>
-  &copy; 2025 Hope International School | Designed by Carrew S. Sandi
-</footer>
-
-<script>
-  function checkResult() {
-    const id = document.getElementById("studentID").value.trim().toUpperCase();
-    const resultOutput = document.getElementById("resultOutput");
-
-    const results = {
-      "HIS2025-001": "John Doe: Math - A, English - B, Science - A",
-      "HIS2025-002": "Jane Smith: Math - B+, English - A, Science - A-"
-      // Add more student IDs here
-    };
-
-    if (results[id]) {
-      resultOutput.innerText = results[id];
-    } else {
-      resultOutput.innerText = "No result found. Please check the ID again.";
-      resultOutput.style.color = "red";
-    }
-  }
-</script>
-
+  <footer>
+    &copy; 2025 CarrewTech | School Web Solutions
+  </footer>
 </body>
 </html>
