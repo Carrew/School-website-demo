@@ -1,73 +1,102 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html><html lang="en">
 <head>
-  <title>Brighter Day Results Portal</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brighter Day School Portal</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      padding: 40px;
-      background: #333; /* charcoal gray */
-      color: #ffc107;  /* yellow */
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+    header {
+      background-color: #333;
+      color: #ffcc00;
+      padding: 20px;
       text-align: center;
     }
-    input[type="text"] {
+    nav {
+      background-color: #444;
+      overflow: hidden;
+    }
+    nav a {
+      float: left;
+      display: block;
+      color: #ffcc00;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+    nav a:hover {
+      background-color: #555;
+    }
+    section {
+      padding: 20px;
+    }
+    footer {
+      background-color: #333;
+      color: #fff;
+      text-align: center;
       padding: 10px;
-      font-size: 16px;
-      width: 250px;
-      border: none;
-      border-radius: 5px;
-      margin-right: 10px;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
     }
-    button {
+    .btn {
+      background-color: #ffcc00;
+      color: #000;
+      border: none;
       padding: 10px 20px;
-      font-size: 16px;
-      background: #ffc107;
-      border: none;
-      border-radius: 5px;
       cursor: pointer;
-      color: #333;
-      font-weight: bold;
+      font-size: 16px;
     }
-    #errorMsg {
-      margin-top: 15px;
-      color: #ff4444;
-      font-weight: bold;
+    .btn:hover {
+      background-color: #e6b800;
     }
   </style>
 </head>
 <body>
-
-  <h1>Brighter Day Preparatory School</h1>
-  <p>Enter your Student ID to check your results</p>
-  
-  <input type="text" id="studentId" placeholder="Enter Student ID (e.g., BDPS1001)" />
-  <button onclick="checkAndRedirect()">Check Results</button>
-  
-  <div id="errorMsg"></div>
-
-  <script>
-    function checkAndRedirect() {
-      const idInput = document.getElementById('studentId');
-      const errorDiv = document.getElementById('errorMsg');
-      const studentId = idInput.value.trim().toUpperCase();
-
-      // Clear previous error
-      errorDiv.textContent = '';
-
-      // Simple validation for empty or wrong format
-      if (!studentId) {
-        errorDiv.textContent = 'Please enter your Student ID.';
-        return;
-      }
-      if (!/^BDPS\d{4}$/.test(studentId)) {
-        errorDiv.textContent = 'Invalid Student ID format. Example: BDPS1001';
-        return;
-      }
-
-      // Redirect to results page with ID as query param
-      window.location.href = `results.html?id=${studentId}`;
-    }
-  </script>
-
+  <header>
+    <h1>Brighter Day Preparatory Elementary Junior and Senior High School</h1>
+    <p>Empowering Students for a Brighter Future</p>
+  </header>  <nav>
+    <a href="#about">About</a>
+    <a href="#mission">Mission</a>
+    <a href="#values">Values</a>
+    <a href="#staff">Staff</a>
+    <a href="#students">Students</a>
+    <a href="#results">Check Results</a>
+  </nav>  <section id="about">
+    <h2>About Us</h2>
+    <p>Brighter Day is a forward-thinking school in Paynesville dedicated to providing quality education from 1st to 12th grade. With 100 students and 10 passionate teachers, we prepare every child for academic success and strong character development.</p>
+  </section>  <section id="mission">
+    <h2>Mission</h2>
+    <p>To nurture young minds through holistic education, innovative teaching, and strong moral values to become leaders and contributors to society.</p>
+  </section>  <section id="values">
+    <h2>Our Core Values</h2>
+    <ul>
+      <li>Integrity</li>
+      <li>Excellence</li>
+      <li>Respect</li>
+      <li>Creativity</li>
+      <li>Community</li>
+    </ul>
+  </section>  <section id="staff">
+    <h2>Meet Our Staff</h2>
+    <p><a href="staff.html" class="btn">View Staff List</a></p>
+  </section>  <section id="students">
+    <h2>Student Information</h2>
+    <p><a href="students.html" class="btn">View Students</a></p>
+  </section>  <section id="results">
+    <h2>Results Checker</h2>
+    <form action="results.html" method="get">
+      <label for="id">Enter Student ID:</label><br>
+      <input type="text" id="id" name="id" required>
+      <button type="submit" class="btn">View Results</button>
+    </form>
+  </section>  <footer>
+    <p>&copy; 2025 Brighter Day School. All rights reserved.</p>
+  </footer>
 </body>
 </html>
